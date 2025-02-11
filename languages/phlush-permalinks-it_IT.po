@@ -1,0 +1,146 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Phlush Permalinks\n"
+"POT-Creation-Date: 2025-02-10 21:17-0500\n"
+"PO-Revision-Date: 2025-02-10 21:18-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: it_IT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: phlush-permalinks.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Poedit-SearchPathExcluded-1: vendor\n"
+
+#: phlush-permalinks.php:105
+#, php-format
+msgid "Custom Interval (%d minutes)"
+msgstr "Intervallo personalizzato (%d minuti)"
+
+#: phlush-permalinks.php:164 phlush-permalinks.php:242
+msgid "Phlush Permalinks Settings"
+msgstr "Impostazioni dei permalink di Phlush"
+
+#. Plugin Name of the plugin/theme
+#: phlush-permalinks.php:165
+msgid "Phlush Permalinks"
+msgstr "Phlush Permalinks"
+
+#: phlush-permalinks.php:207
+msgid "Brought to you by"
+msgstr "Portato da te"
+
+#. Author of the plugin/theme
+#: phlush-permalinks.php:207
+msgid "Robert DeVore"
+msgstr "Robert DeVore"
+
+#: phlush-permalinks.php:214
+msgid "Save Settings"
+msgstr "Salva Impostazioni"
+
+#: phlush-permalinks.php:249
+msgid "Flush Interval (minutes)"
+msgstr "Intervallo di lavaggio (minuti)"
+
+#: phlush-permalinks.php:257
+msgid "Flush Actions"
+msgstr "Azioni di risciacquo"
+
+#: phlush-permalinks.php:322
+msgid "Post Save/Edit"
+msgstr "Salva/modifica post"
+
+#: phlush-permalinks.php:323
+msgid "Post Creation"
+msgstr "Post Creazione"
+
+#: phlush-permalinks.php:324
+msgid "Post Edit"
+msgstr "Modifica Post"
+
+#: phlush-permalinks.php:325
+msgid "Post Deletion"
+msgstr "Post-cancellazione"
+
+#: phlush-permalinks.php:326
+msgid "Page Save/Edit"
+msgstr "Salva/modifica pagina"
+
+#: phlush-permalinks.php:327
+msgid "Page Creation"
+msgstr "Creazione della pagina"
+
+#: phlush-permalinks.php:328
+msgid "Category Creation"
+msgstr "Categoria Creazione"
+
+#: phlush-permalinks.php:329
+msgid "Category Edit"
+msgstr "Categoria Modifica"
+
+#: phlush-permalinks.php:330
+msgid "Category Deletion"
+msgstr "Cancellazione della categoria"
+
+#: phlush-permalinks.php:331
+msgid "Term Creation"
+msgstr "Creazione del termine"
+
+#: phlush-permalinks.php:332
+msgid "Term Edit"
+msgstr "Termine Modifica"
+
+#: phlush-permalinks.php:333
+msgid "Term Deletion"
+msgstr "Cancellazione del termine"
+
+#: phlush-permalinks.php:334
+msgid "Menu Update"
+msgstr "Aggiornamento del menu"
+
+#: phlush-permalinks.php:335
+msgid "Widgets Update"
+msgstr "Aggiornamento dei widget"
+
+#: phlush-permalinks.php:339
+msgid "WooCommerce Product Save/Edit"
+msgstr "Salvataggio/modifica dei prodotti WooCommerce"
+
+#: phlush-permalinks.php:340
+msgid "WooCommerce Product Stock Update"
+msgstr "Aggiornamento delle scorte di prodotti di WooCommerce"
+
+#: phlush-permalinks.php:344
+msgid "Yoast SEO Post Save"
+msgstr "Yoast SEO Salva i post"
+
+#: phlush-permalinks.php:348
+msgid "ACF Field Group Save"
+msgstr "Gruppo di lavoro ACF Salva"
+
+#. Plugin URI of the plugin/theme
+msgid "https://robertdevore.com/phlush-permalinks-wordpress-plugin/"
+msgstr "https://robertdevore.com/phlush-permalinks-wordpress-plugin/"
+
+#. Description of the plugin/theme
+msgid ""
+"Automatic permalink flushing at custom intervals and triggers flush on "
+"selected actions for enhanced site management."
+msgstr ""
+"Il lavaggio automatico del permalink a intervalli personalizzati e "
+"l'attivazione del lavaggio in caso di azioni selezionate consentono di "
+"migliorare la gestione del sito."
+
+#. Author URI of the plugin/theme
+msgid "https://robertdevore.com"
+msgstr "https://robertdevore.com"
