@@ -10,7 +10,7 @@
   * Plugin Name:          Phlush Permalinks
   * Plugin URI:           https://robertdevore.com/phlush-permalinks-wordpress-plugin/
   * Description:          Automatic permalink flushing at custom intervals and triggers flush on selected actions for enhanced site management.
-  * Version:              1.0.0
+  * Version:              1.0.1
   * Author:               Robert DeVore
   * Author URI:           https://robertdevore.com
   * License:              GPLv3
@@ -57,7 +57,7 @@ function phlush_permalinks_load_textdomain() {
 add_action( 'plugins_loaded', 'phlush_permalinks_load_textdomain' );
 
 // Plugin constants.
-define( 'PHLUSH_PERMALINKS__VERSION', '1.0.0' );
+define( 'PHLUSH_PERMALINKS__VERSION', '1.0.1' );
 define( 'PHLUSH_PERMALINKS_PLUGIN_SLUG', 'phlush_permalinks_plugin' );
 define( 'PHLUSH_PERMALINKS_OPTION_NAME', 'phlush_permalinks_flush_interval' );
 define( 'PHLUSH_PERMALINKS_ACTIONS_OPTION_NAME', 'phlush_permalinks_flush_actions' );
