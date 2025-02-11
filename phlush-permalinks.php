@@ -36,6 +36,15 @@ $myUpdateChecker = PucFactory::buildUpdateChecker(
 //Set the branch that contains the stable release.
 $myUpdateChecker->setBranch( 'main' );
 
+// Check if Composer's autoloader is already registered globally.
+if ( ! class_exists( 'RobertDevore\WPComCheck\WPComPluginHandler' ) ) {
+    require_once __DIR__ . '/vendor/autoload.php';
+}
+
+use RobertDevore\WPComCheck\WPComPluginHandler;
+
+new WPComPluginHandler( plugin_basename( __FILE__ ), 'https://robertdevore.com/why-this-plugin-doesnt-support-wordpress-com-hosting/' );
+
 // Plugin constants.
 define( 'PHLUSH_PERMALINKS__VERSION', '1.0.0' );
 define( 'PHLUSH_PERMALINKS_PLUGIN_SLUG', 'phlush_permalinks_plugin' );
