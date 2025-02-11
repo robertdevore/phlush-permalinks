@@ -45,6 +45,18 @@ use RobertDevore\WPComCheck\WPComPluginHandler;
 
 new WPComPluginHandler( plugin_basename( __FILE__ ), 'https://robertdevore.com/why-this-plugin-doesnt-support-wordpress-com-hosting/' );
 
+/**
+ * Load plugin text domain for localization.
+ *
+ * @since  1.0.0
+ * @return void
+ */
+function phlush_permalinks_load_textdomain() {
+    load_plugin_textdomain( 'phlush-permalinks', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+}
+add_action( 'plugins_loaded', 'phlush_permalinks_load_textdomain' );
+
+
 // Plugin constants.
 define( 'PHLUSH_PERMALINKS__VERSION', '1.0.0' );
 define( 'PHLUSH_PERMALINKS_PLUGIN_SLUG', 'phlush_permalinks_plugin' );
