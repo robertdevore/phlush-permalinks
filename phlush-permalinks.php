@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
     exit;
 }
 
-require 'plugin-update-checker/plugin-update-checker.php';
+require 'vendor/plugin-update-checker/plugin-update-checker.php';
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 $myUpdateChecker = PucFactory::buildUpdateChecker(
@@ -56,7 +56,6 @@ function phlush_permalinks_load_textdomain() {
 }
 add_action( 'plugins_loaded', 'phlush_permalinks_load_textdomain' );
 
-
 // Plugin constants.
 define( 'PHLUSH_PERMALINKS__VERSION', '1.0.0' );
 define( 'PHLUSH_PERMALINKS_PLUGIN_SLUG', 'phlush_permalinks_plugin' );
@@ -67,6 +66,7 @@ define( 'PHLUSH_PERMALINKS_ACTIONS_OPTION_NAME', 'phlush_permalinks_flush_action
  * Activation hook: Schedules the permalink flush event on plugin activation.
  * 
  * @since  1.0.0
+ * @return void
  */
 function phlush_permalinks_schedule_permalink_flush() {
     // Ensure custom cron interval is added before scheduling the event
@@ -83,6 +83,7 @@ register_activation_hook( __FILE__, 'phlush_permalinks_schedule_permalink_flush'
  * Deactivation hook: Clears the scheduled event on plugin deactivation.
  * 
  * @since  1.0.0
+ * @return void
  */
 function phlush_permalinks_clear_scheduled_event() {
     wp_clear_scheduled_hook( 'phlush_permalinks_flush_permalinks' );
@@ -93,6 +94,7 @@ register_deactivation_hook( __FILE__, 'phlush_permalinks_clear_scheduled_event' 
  * Adds a custom cron interval based on the user-defined setting.
  * 
  * @since  1.0.0
+ * @return mixed
  */
 function phlush_permalinks_add_custom_cron_interval( $schedules ) {
     $interval = absint( get_option( PHLUSH_PERMALINKS_OPTION_NAME, 5 ) );
@@ -110,6 +112,7 @@ add_filter( 'cron_schedules', 'phlush_permalinks_add_custom_cron_interval' );
  * Function to flush permalinks and log the action.
  * 
  * @since 1.0.0
+ * @return void
  */
 function phlush_permalinks_flush_permalinks_function() {
     // Only flush once per request
@@ -152,6 +155,9 @@ add_action( 'phlush_permalinks_flush_permalinks', 'phlush_permalinks_flush_perma
 
 /**
  * Adds the settings page under the WordPress 'Settings' menu.
+ * 
+ * @since  1.0.0
+ * @return void
  */
 function phlush_permalinks_add_settings_page() {
     add_options_page(
@@ -168,6 +174,7 @@ add_action( 'admin_menu', 'phlush_permalinks_add_settings_page' );
  * Enqueues the Select2 library and custom scripts/styles for the settings page.
  * 
  * @since 1.0.0
+ * @return void
  */
 function phlush_permalinks_enqueue_admin_scripts( $hook ) {
     // Check if the current page is the Phlush Permalinks settings page.
@@ -191,6 +198,7 @@ add_action( 'admin_enqueue_scripts', 'phlush_permalinks_enqueue_admin_scripts' )
  * Renders the settings page where the user can set the flush interval and select actions to trigger the flush.
  * 
  * @since  1.0.0
+ * @return void
  */
 function phlush_permalinks_render_settings_page() {
     ?>
@@ -214,6 +222,7 @@ function phlush_permalinks_render_settings_page() {
  * Registers the plugin settings with WordPress.
  * 
  * @since  1.0.0
+ * @return void
  */
 function phlush_permalinks_register_settings() {
     register_setting( PHLUSH_PERMALINKS_PLUGIN_SLUG, PHLUSH_PERMALINKS_OPTION_NAME, [
@@ -257,6 +266,7 @@ add_action( 'admin_init', 'phlush_permalinks_register_settings' );
  * Renders the input field for setting the flush interval.
  * 
  * @since  1.0.0
+ * @return void
  */
 function phlush_permalinks_render_flush_interval_field() {
     $interval = absint( get_option( PHLUSH_PERMALINKS_OPTION_NAME, 5 ) );
@@ -267,6 +277,7 @@ function phlush_permalinks_render_flush_interval_field() {
  * Renders the Select2 multi-select field for choosing which actions should trigger a permalink flush.
  * 
  * @since 1.0.0
+ * @return void
  */
 function phlush_permalinks_render_flush_actions_field() {
     // Retrieve the saved actions, or use the full list of available actions as the default if nothing is saved.
@@ -290,6 +301,7 @@ function phlush_permalinks_render_flush_actions_field() {
  * Updates the cron schedule when the flush interval setting is changed.
  * 
  * @since  1.0.0
+ * @return void
  */
 function phlush_permalinks_update_cron_schedule( $old_value, $new_value ) {
     phlush_permalinks_clear_scheduled_event();
@@ -303,6 +315,7 @@ add_action( 'update_option_' . PHLUSH_PERMALINKS_OPTION_NAME, 'phlush_permalinks
  * @return array List of action hooks and their labels.
  * 
  * @since  1.0.0
+ * @return void
  */
 function phlush_permalinks_get_available_actions() {
     $actions = [
@@ -341,7 +354,8 @@ function phlush_permalinks_get_available_actions() {
 /**
  * Hooks into the selected actions and flushes permalinks when those actions occur.
  * 
- * @since 1.0.0
+ * @since  1.0.0
+ * @return void
  */
 function phlush_permalinks_hook_into_selected_actions() {
     // Retrieve and sanitize the selected actions from the options.
@@ -372,6 +386,7 @@ add_action( 'init', 'phlush_permalinks_hook_into_selected_actions' );
  * @return array Sanitized array of valid actions.
  * 
  * @since 1.0.0
+ * @return array
  */
 function phlush_permalinks_sanitize_actions( $actions ) {
     if ( ! is_array( $actions ) ) {
@@ -380,8 +395,8 @@ function phlush_permalinks_sanitize_actions( $actions ) {
 
     $available_actions = phlush_permalinks_get_available_actions();
 
-    // Filter the actions to ensure they are valid
+    // Filter the actions to ensure they are valid.
     return array_filter( $actions, function( $action ) use ( $available_actions ) {
         return isset( $available_actions[ $action ] );
-    });
+    } );
 }
